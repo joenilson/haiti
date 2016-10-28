@@ -1,0 +1,5 @@
+Plugin de adaptación de FacturaScripts a <b>Haití</b>.
+<ul>
+    <li>Agrega las monedas HTG, USD si no estan creadas.</li>
+    <li>Genera un Plan Contable básico para Haití.</li>
+</ul>
