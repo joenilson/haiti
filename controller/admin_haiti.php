@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Copyright (C) 2016 Joe Nilson <joenilson at gmail.com>
  *
@@ -17,6 +16,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 require_model('impuesto.php');
+require_model('pais.php');
+require_model('divisa.php');
+require_model('cuenta_especial.php');
+require_once 'plugins/haiti/vendor/php-i18n/i18n.class.php';
 /**
  * Description of admin_haiti
  *
@@ -29,11 +32,14 @@ class admin_haiti extends fs_controller {
     public $conf_regional;
     public $impuestos_haiti;
     public $variables;
+    public $i18n;
+    public $pagetitle;
     public function __construct() {
         parent::__construct(__CLASS__, 'Haití', 'admin', TRUE, TRUE, FALSE);
     }
     
     protected function private_core() {
+        $this->language();
         $this->share_extensions();
         $impuesto_empresa = new impuesto();
         $this->variables = array();
@@ -48,14 +54,14 @@ class admin_haiti extends fs_controller {
         $this->variables['factura_simplificada'] = "facture simplifiée";
         $this->variables['factura_rectificativa'] = "facture rectificative";
         $this->variables['albaran'] = "récépissé";
-        $this->variables['albaranes'] = "bordereaux d'emballage";
+        $this->variables['albaranes'] = "bordereaux d emballage";
         $this->variables['pedido'] = "ordre";
         $this->variables['pedidos'] = "ordres";
         $this->variables['presupuesto'] = "budget";
         $this->variables['presupuestos'] = "budgets";
         $this->variables['provincia'] = "province";
         $this->variables['apartado'] = "PO";
-        $this->variables['cifnif'] = "Carte d'identité/NIF";
+        $this->variables['cifnif'] = "Carte d identité/NIF";
         $this->variables['iva'] = "TCA";
         $this->variables['numero2'] = "Numéro Auxiliaire";
         $this->variables['serie'] = "série";
@@ -82,6 +88,15 @@ class admin_haiti extends fs_controller {
         $this->conf_regional = ($GLOBALS['config2']['iva'] == 'TCA') ? TRUE : FALSE;
         $this->conf_impuestos = ($impuesto_empresa->get_by_iva(10)) ? TRUE : FALSE;        
         
+    }
+    
+    private function language($lang=false){
+        if($lang){
+            $this->i18n = new i18n('plugins/haiti/lang/lang_'.$lang.'.ini', FS_TMP_NAME.'langcache/', $lang);
+        }else{
+            $this->i18n = new i18n('plugins/haiti/lang/lang_{LANGUAGE}.ini', FS_TMP_NAME.'langcache/', 'es');
+        }
+        $this->i18n->init();
     }
     
     public function impuestos() {
@@ -209,7 +224,7 @@ class admin_haiti extends fs_controller {
         $guardar = FALSE;
         foreach ($GLOBALS['config2'] as $i => $value) {
             if (isset($this->variables[$i])) {
-                $GLOBALS['config2'][$i] = $this->variables[$i];
+                $GLOBALS['config2'][$i] = htmlspecialchars($this->variables[$i]);
                 $guardar = TRUE;
             }
         }
