@@ -39,7 +39,7 @@ class admin_haiti extends fs_controller {
     }
     
     protected function private_core() {
-        $this->language();
+        $this->language('fr');
         $this->share_extensions();
         $impuesto_empresa = new impuesto();
         $this->variables = array();
@@ -53,7 +53,7 @@ class admin_haiti extends fs_controller {
         $this->variables['facturas'] = "factures";
         $this->variables['factura_simplificada'] = "facture simplifiée";
         $this->variables['factura_rectificativa'] = "facture rectificative";
-        $this->variables['albaran'] = "récépissé";
+        $this->variables['albaran'] = "bordereau de livraison";
         $this->variables['albaranes'] = "bordereaux d emballage";
         $this->variables['pedido'] = "ordre";
         $this->variables['pedidos'] = "ordres";
@@ -91,11 +91,9 @@ class admin_haiti extends fs_controller {
     }
     
     private function language($lang=false){
-        if($lang){
-            $this->i18n = new i18n('plugins/haiti/lang/lang_'.$lang.'.ini', FS_TMP_NAME.'langcache/', $lang);
-        }else{
-            $this->i18n = new i18n('plugins/haiti/lang/lang_{LANGUAGE}.ini', FS_TMP_NAME.'langcache/', 'es');
-        }
+        $language = ($lang and file_exists(FS_PATH.FS_MYDOCS.'plugins/haiti/lang/lang_'.$lang.'.ini'))?$lang:'es';
+        $this->i18n = new i18n(FS_PATH.FS_MYDOCS.'plugins/haiti/lang/lang_'.$language.'.ini', FS_PATH.FS_MYDOCS.'plugins/haiti/langcache/');
+        $this->i18n->setForcedLang($language);
         $this->i18n->init();
     }
     
@@ -252,7 +250,7 @@ class admin_haiti extends fs_controller {
         $fsext->to = 'contabilidad_ejercicio';
         $fsext->type = 'fuente';
         $fsext->text = 'Plan Comptable Nationale Haitien';
-        $fsext->params = FS_PATH.'plugins/haiti/extras/haiti.xml';
+        $fsext->params = FS_PATH.'plugins/haiti/extras/pcn_haiti.xml';
         $fsext->save();
     }
 }
