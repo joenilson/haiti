@@ -103,16 +103,16 @@ class admin_haiti extends fs_controller {
         //Eliminamos los Impuestos que no son de HAITI
         $lista_impuestos =array();
         foreach ($this->impuestos_haiti as $imp) {
-            $lista_impuestos[]=$imp['porcentaje'];
+            $lista_impuestos[]=$imp['codigo'];
         }
 
         foreach ($impuestos->all() as $imp) {
-            if(!in_array($imp->iva, $lista_impuestos)){
+            if(!in_array($imp->codimpuesto, $lista_impuestos)){
                 $imp->delete();
             }
         }
 
-        //Agregamos los Impuestos de RD
+        //Agregamos los Impuestos de Haiti
         foreach ($this->impuestos_haiti as $imp) {
             if(!$impuestos->get_by_iva($imp['porcentaje'])){
                 $imp0 = new impuesto();
