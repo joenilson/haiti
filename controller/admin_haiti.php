@@ -37,7 +37,7 @@ class admin_haiti extends fs_controller {
     public function __construct() {
         parent::__construct(__CLASS__, 'Haití', 'admin', TRUE, TRUE, FALSE);
     }
-    
+
     protected function private_core() {
         $this->language('fr');
         $this->share_extensions();
@@ -66,12 +66,12 @@ class admin_haiti extends fs_controller {
         $this->variables['numero2'] = "Numéro Auxiliaire";
         $this->variables['serie'] = "série";
         $this->variables['series'] = "série";
-        
+
         $this->impuestos_haiti = array(
             array('codigo' => 'TCA10', 'descripcion' => 'TCA 10%', 'porcentaje' => 10, 'recargo' => 0, 'subcuenta_compras' => '02010602', 'subcuenta_ventas' => '02010602'),
             array('codigo' => 'EXEMPT', 'descripcion' => 'EXENTO', 'porcentaje' => 0, 'recargo' => 0, 'subcuenta_compras' => '02010602', 'subcuenta_ventas' => '02010602')
         );
-        
+
         if (isset($_GET['opcion'])) {
             if ($_GET['opcion'] == 'moneda') {
                 $this->moneda();
@@ -86,17 +86,17 @@ class admin_haiti extends fs_controller {
         $this->conf_divisa = ($this->empresa->coddivisa == 'HTG') ? TRUE : FALSE;
         $this->conf_pais = ($this->empresa->codpais == 'HTI') ? TRUE : FALSE;
         $this->conf_regional = ($GLOBALS['config2']['iva'] == 'TCA') ? TRUE : FALSE;
-        $this->conf_impuestos = ($impuesto_empresa->get_by_iva(10)) ? TRUE : FALSE;        
-        
+        $this->conf_impuestos = ($impuesto_empresa->get_by_iva(10)) ? TRUE : FALSE;
+
     }
-    
+
     private function language($lang=false){
-        $language = ($lang and file_exists(FS_PATH.FS_MYDOCS.'plugins/haiti/lang/lang_'.$lang.'.ini'))?$lang:'es';
-        $this->i18n = new i18n(FS_PATH.FS_MYDOCS.'plugins/haiti/lang/lang_'.$language.'.ini', FS_PATH.FS_MYDOCS.'plugins/haiti/langcache/');
+        $language = ($lang and file_exists('plugins/haiti/lang/lang_'.$lang.'.ini'))?$lang:'es';
+        $this->i18n = new i18n('plugins/haiti/lang/lang_'.$language.'.ini', 'plugins/haiti/langcache/');
         $this->i18n->setForcedLang($language);
         $this->i18n->init();
     }
-    
+
     public function impuestos() {
         $tratamiento = false;
         $impuestos = new impuesto();
@@ -105,13 +105,13 @@ class admin_haiti extends fs_controller {
         foreach ($this->impuestos_haiti as $imp) {
             $lista_impuestos[]=$imp['porcentaje'];
         }
-        
+
         foreach ($impuestos->all() as $imp) {
             if(!in_array($imp->iva, $lista_impuestos)){
                 $imp->delete();
             }
         }
-        
+
         //Agregamos los Impuestos de RD
         foreach ($this->impuestos_haiti as $imp) {
             if(!$impuestos->get_by_iva($imp['porcentaje'])){
@@ -127,7 +127,7 @@ class admin_haiti extends fs_controller {
                 }
             }
         }
-        
+
         //Corregimos la información de las Cuentas especiales con los nombres correctos
         $cuentas_especiales_rd['IVAACR']='Cuentas acreedoras de TCA en la regularización';
         $cuentas_especiales_rd['IVASOP']='Cuentas de TCA Compras';
@@ -143,14 +143,14 @@ class admin_haiti extends fs_controller {
                 $linea->save();
             }
         }
-        
+
         if($tratamiento){
             $this->new_message('Información de impuestos actualizada correctamente');
         }else{
             $this->new_message('No se modificaron datos de impuestos previamente tratados.');
         }
     }
-    
+
     public function moneda() {
         $tratamiento = false;
         //Validamos si existe la moneda HTG
@@ -179,11 +179,11 @@ class admin_haiti extends fs_controller {
             $div0->save();
             $tratamiento = true;
         }
-        
+
         if($tratamiento){
             $this->new_message('Datos de moneda HTG y USD actualizados correctamente.');
         }
-        
+
         if ($this->empresa->coddivisa != 'HTG') {
             //Elegimos la divisa para la empresa como DOP si no esta generada
             $this->empresa->coddivisa = 'HTG';
@@ -192,7 +192,7 @@ class admin_haiti extends fs_controller {
             }
         }
     }
-    
+
     public function pais() {
         $pais0 = new pais();
         $pais = $pais0->get('HTI');
@@ -216,7 +216,7 @@ class admin_haiti extends fs_controller {
             $this->new_message('Datos guardados correctamente.');
         }
     }
-    
+
     public function configuracion_regional() {
         //Configuramos la información básica para config2.ini
         $guardar = FALSE;
@@ -242,7 +242,7 @@ class admin_haiti extends fs_controller {
             $this->new_message('Datos de configuracion regional guardados correctamente.');
         }
     }
-    
+
     private function share_extensions(){
         $fsext = new fs_extension();
         $fsext->name = 'pcn';
@@ -250,7 +250,7 @@ class admin_haiti extends fs_controller {
         $fsext->to = 'contabilidad_ejercicio';
         $fsext->type = 'fuente';
         $fsext->text = 'Plan Comptable Nationale Haitien';
-        $fsext->params = FS_PATH.'plugins/haiti/extras/pcn_haiti.xml';
+        $fsext->params = 'plugins/haiti/extras/pcn_haiti.xml';
         $fsext->save();
     }
 }
