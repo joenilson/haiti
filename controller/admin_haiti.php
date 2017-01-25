@@ -53,10 +53,10 @@ class admin_haiti extends fs_controller {
         $this->variables['facturas'] = "factures";
         $this->variables['factura_simplificada'] = "facture simplifiée";
         $this->variables['factura_rectificativa'] = "facture rectificative";
-        $this->variables['albaran'] = "bordereau de livraison";
-        $this->variables['albaranes'] = "bordereaux d emballage";
-        $this->variables['pedido'] = "ordre";
-        $this->variables['pedidos'] = "ordres";
+        $this->variables['albaran'] = "livraison";
+        $this->variables['albaranes'] = "livraisons";
+        $this->variables['pedido'] = "commande";
+        $this->variables['pedidos'] = "commandes";
         $this->variables['presupuesto'] = "budget";
         $this->variables['presupuestos'] = "budgets";
         $this->variables['provincia'] = "province";
