@@ -17,8 +17,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 require_once 'plugins/haiti/vendor/php-i18n/i18n.class.php';
-$i18n = "";
-function i18n($lang){
+function i18n($lang=false){
+    //$lang = substr(input_filter(INPUT_SERVER,'HTTP_ACCEPT_LANGUAGE'), 0, 2);
+    $lang = 'fr';
     $language = ($lang and file_exists('plugins/haiti/lang/lang_'.$lang.'.ini'))?$lang:'es';
     $i18n = new i18n('plugins/haiti/lang/lang_'.$language.'.ini', 'plugins/haiti/langcache/');
     $i18n->setForcedLang($language);
