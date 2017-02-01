@@ -67,31 +67,31 @@
    <div class="row">
       <div class="col-sm-12">
          <p class="help-block">
-             <b>{function="L::informeArticulos_resumen($fsc->show_numero($fsc->stats['total'], 0), $fsc->show_numero($fsc->stats['con_stock'], 0), $fsc->show_numero($fsc->stats['publicos'], 0), $fsc->show_numero($fsc->stats['bloqueados'], 0), $fsc->stats['factualizado'])"}</b><br/>
+             {function="L::informeArticulos_resumen($fsc->show_numero($fsc->stats['total'], 0), $fsc->show_numero($fsc->stats['con_stock'], 0), $fsc->show_numero($fsc->stats['publicos'], 0), $fsc->show_numero($fsc->stats['bloqueados'], 0), $fsc->stats['factualizado'])"}
          </p>
          <div class="panel panel-info">
             <div class="panel-heading">
-               <h3 class="panel-title">Top ventas</h3>
+               <h3 class="panel-title">{function="L::informeArticulos_TopVentas"}</h3>
             </div>
             <form action="{$fsc->url()}" method="post" class="form">
                <div class="panel-body">
                   <div class="row">
                      <div class="col-sm-2">
                         <div class="input-group">
-                           <span class="input-group-addon">Desde</span>
+                           <span class="input-group-addon">{function="L::informeArticulos_Desde"}</span>
                            <input type="text" name="desde" value="{$fsc->desde}" class="form-control datepicker" autocomplete="off"/>
                         </div>
                      </div>
                      <div class="col-sm-2">
                         <div class="input-group">
-                           <span class="input-group-addon">Hasta</span>
+                           <span class="input-group-addon">{function="L::informeArticulos_Hasta"}</span>
                            <input type="text" name="hasta" value="{$fsc->hasta}" class="form-control datepicker" autocomplete="off"/>
                         </div>
                      </div>
                      <div class="col-sm-8 text-right">
                         <button type="submit" class="btn btn-sm btn-primary">
                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                           <span class="hidden-xs">&nbsp; Buscar</span>
+                           <span class="hidden-xs">&nbsp; {function="L::informeArticulos_Buscar"}</span>
                         </button>
                      </div>
                   </div>
@@ -101,10 +101,10 @@
                <table class="table table-hover">
                   <thead>
                      <tr>
-                        <th>Referencia + Descripción</th>
-                        <th class="text-right">Vendido</th>
-                        <th class="text-right">Total</th>
-                        <th class="text-right">Beneficio</th>
+                        <th>{function="L::informeArticulos_Referencia"} + {function="L::informeArticulos_Descripcion"}</th>
+                        <th class="text-right">{function="L::informeArticulos_Vendido"}</th>
+                        <th class="text-right">{function="L::informeArticulos_Total"}</th>
+                        <th class="text-right">{function="L::informeArticulos_Beneficio"}</th>
                      </tr>
                   </thead>
                   {loop="$fsc->top_ventas"}
@@ -123,7 +123,7 @@
                   </tr>
                   {else}
                   <tr class="warning">
-                     <td colspan="4">Sin resultados.</td>
+                     <td colspan="4">{function="L::informeArticulos_SinResultados"}</td>
                   </tr>
                   {/loop}
                </table>
@@ -131,20 +131,20 @@
          </div>
          <div class="panel panel-warning">
             <div class="panel-heading">
-               <h3 class="panel-title">Top artículos con stock aun no vendidos este año</h3>
+               <h3 class="panel-title">{function="L::informeArticulos_TopArticulosNoVendidos"}</h3>
             </div>
             <div class="table-responsive">
                <table class="table table-hover">
                   <thead>
                      <tr>
-                        <th>Referencia + descripción</th>
-                        <th class="text-right">Stock</th>
+                        <th>{function="L::informeArticulos_Referencia"} + {function="L::informeArticulos_Descripcion"}</th>
+                        <th class="text-right">{function="L::informeArticulos_Stock"}</th>
                         <th></th>
-                        <th>Referencia + descripción</th>
-                        <th class="text-right">Stock</th>
+                        <th>{function="L::informeArticulos_Referencia"} + {function="L::informeArticulos_Descripcion"}</th>
+                        <th class="text-right">{function="L::informeArticulos_Stock"}</th>
                         <th></th>
-                        <th>Referencia + descripción</th>
-                        <th class="text-right">Stock</th>
+                        <th>{function="L::informeArticulos_Referencia"} + {function="L::informeArticulos_Descripcion"}</th>
+                        <th class="text-right">{function="L::informeArticulos_Stock"}</th>
                      </tr>
                   </thead>
                   <!--{$num=1}-->
@@ -162,7 +162,7 @@
                      {/if}
                   {else}
                   <tr class="warning">
-                     <td colspan="8">Sin resultados.</td>
+                     <td colspan="8">{function="L::informeArticulos_SinResultados"}</td>
                   </tr>
                   {/loop}
                   {if="$num==2"}
@@ -175,20 +175,20 @@
          </div>
          <div class="panel panel-default">
             <div class="panel-heading">
-               <h3 class="panel-title">Top compras del {$fsc->desde} al {$fsc->hasta}</h3>
+               <h3 class="panel-title">{function="L::informeArticulos_TopCompras($fsc->desde,$fsc->hasta)"}</h3>
             </div>
             <div class="table-responsive">
                <table class="table table-hover">
                   <thead>
                      <tr>
-                        <th>Referencia + descripción</th>
-                        <th class="text-right">Unidades</th>
+                        <th>{function="L::informeArticulos_Referencia"} + {function="L::informeArticulos_Descripcion"}</th>
+                        <th class="text-right">{function="L::informeArticulos_Unidades"}</th>
                         <th></th>
-                        <th>Referencia + descripción</th>
-                        <th class="text-right">Unidades</th>
+                        <th>{function="L::informeArticulos_Referencia"} + {function="L::informeArticulos_Descripcion"}</th>
+                        <th class="text-right">{function="L::informeArticulos_Unidades"}</th>
                         <th></th>
-                        <th>Referencia + descripción</th>
-                        <th class="text-right">Unidades</th>
+                        <th>{function="L::informeArticulos_Referencia"} + {function="L::informeArticulos_Descripcion"}</th>
+                        <th class="text-right">{function="L::informeArticulos_Unidades"}</th>
                      </tr>
                   </thead>
                   <!--{$num=1}-->
@@ -206,7 +206,7 @@
                      {/if}
                   {else}
                   <tr class="warning">
-                     <td colspan="8">Sin resultados.</td>
+                     <td colspan="8">{function="L::informeArticulos_SinResultados"}</td>
                   </tr>
                   {/loop}
                   {if="$num==2"}
@@ -220,7 +220,7 @@
          {if="$fsc->user->admin"}
          <div class="panel panel-default">
             <div class="panel-heading">
-               <h3 class="panel-title">Búsquedas de artículos</h3>
+               <h3 class="panel-title">{function="L::informeArticulos_BusquedaArticulo"}</h3>
             </div>
             <div class="panel-body">
                <div class="container-fluid">
@@ -228,7 +228,7 @@
                      {loop="$fsc->articulo->get_search_tags()"}
                      <div class="col-sm-3">{$value['tag']} ({$value['count']})</div>
                      {else}
-                     <div class="col-sm-12">Ninguna búsqueda realizada.</div>
+                     <div class="col-sm-12">{function="L::informeArticulos_NingunaBusquedaRealizada"}</div>
                      {/loop}
                   </div>
                </div>
@@ -424,7 +424,7 @@
       <div class="row">
          <div class="col-sm-3">
             <div class="form-group">
-               <a href="{$fsc->impuesto->url()}">Impuesto</a>
+               <a href="{$fsc->impuesto->url()}">{function="L::informeArticulos_Impuesto"}</a>
                <select name="codimpuesto" class="form-control" onchange="this.form.submit()">
                   {loop="$fsc->impuesto->all()"}
                      {if="$value->codimpuesto==$fsc->codimpuesto"}
@@ -435,9 +435,9 @@
                   {/loop}
                   <option value="">------</option>
                   {if="$fsc->codimpuesto==''"}
-                  <option value="" selected="">Sin impuesto</option>
+                  <option value="" selected="">{function="L::informeArticulos_SinImpuesto"}</option>
                   {else}
-                  <option value="">Sin impuesto</option>
+                  <option value="">{function="L::informeArticulos_SinImpuesto"}</option>
                   {/if}
                </select>
             </div>
@@ -445,15 +445,15 @@
          <div class="col-sm-2">
             <br/>
             <button class="btn btn-sm btn-primary" type="submit" onclick="this.disabled=true;this.form.submit();">
-               <span class="glyphicon glyphicon-eye-open"></span> &nbsp; Mostrar
+               <span class="glyphicon glyphicon-eye-open"></span> &nbsp; {function="L::informeArticulos_Mostrar"}
             </button>
          </div>
          <div class="col-sm-4"></div>
          <div class="col-sm-3">
             <div class="form-group">
-               Cambiar a
+               {function="L::informeArticulos_CambiarA"}
                <select name="new_codimpuesto" class="form-control" onchange="this.form.submit()">
-                  <option value="">(Sin cambios)</option>
+                  <option value="">({function="L::informeArticulos_SinCambios"})</option>
                   <option value="">------</option>
                   {loop="$fsc->impuesto->all()"}
                   <option value="{$value->codimpuesto}">{$value->descripcion}</option>
@@ -468,13 +468,13 @@
    <table class="table table-hover">
       <thead>
          <tr>
-            <th class="text-left">Familia</th>
-            <th class="text-left">Fabricante</th>
-            <th class="text-left">Referencia + Descripción</th>
-            <th class="text-right">Precio</th>
-            <th class="text-right">Impuesto</th>
-            <th class="text-right">Precio+{#FS_IVA#}</th>
-            <th class="text-right">Stock</th>
+            <th class="text-left">{function="L::informeArticulos_Familia"}</th>
+            <th class="text-left">{function="L::informeArticulos_Fabricante"}</th>
+            <th class="text-left">{function="L::informeArticulos_Referencia"} + Descripción</th>
+            <th class="text-right">{function="L::informeArticulos_Precio"}</th>
+            <th class="text-right">{function="L::informeArticulos_Impuesto"}</th>
+            <th class="text-right">{function="L::informeArticulos_Precio"}+{#FS_IVA#}</th>
+            <th class="text-right">{function="L::informeArticulos_Stock"}</th>
             <th class="text-right"></th>
          </tr>
       </thead>
@@ -511,7 +511,7 @@
       </tr>
       {else}
       <tr class="warning">
-         <td colspan="8">Ningun artículo encontrado.</td>
+         <td colspan="8">{function="L::informeArticulos_NingunArticuloEncontrado"}</td>
       </tr>
       {/loop}
    </table>
@@ -585,10 +585,7 @@
          {/if}
          <br/>
          <p class="help-block">
-            Aquí dispones de varios informes para consultar el listado de movimientos
-            de un artículo, las compras o ventas de artículos en un determinado periodo
-            o el desglose de ventas a clientes por artículo. Elige el que necesites
-            y ajusta los filtros a tus necesidades.
+            {function="L::informeArticulos_BloqueAyudaVarios"}<br/>
          </p>
       </div>
    </div>
@@ -600,30 +597,27 @@
                   <div class="panel-heading">
                      <h3 class="panel-title">
                         <span class="glyphicon glyphicon-transfer"></span>
-                        &nbsp; Listado de movimientos
+                        &nbsp;{function="L::informeArticulos_ListadoMovimientos"}
                      </h3>
                   </div>
                   <div class="panel-body">
                      <p class="help-block">
-                        Genera un listado de movimientos de stock del artículo seleccionado
-                        a partir de las regularizaciones de stock, los {#FS_ALBARANES#}
-                        y las facturas de compra y de venta.
+                        {function="L::informeArticulos_BloqueAyudaListadoMovimientos"}
                      </p>
                      <p class="help-block">
-                        También dispones del <b>plugin kardex</b> para obtener un listado
-                        de inventario valorado.
+                        {function="L::informeArticulos_BloqueAyudaListadoMovimientosKardex"}<br/>
                      </p>
                      <div class="form-group">
-                        Referencia:
-                        <input class="form-control" type="text" name="referencia" value="{$fsc->referencia}" id="ac_referencia" maxlength="18" placeholder="referencia" autocomplete="off"/>
+                        {function="L::informeArticulos_Referencia"}:
+                        <input class="form-control" type="text" name="referencia" value="{$fsc->referencia}" id="ac_referencia" maxlength="18" placeholder="{function="L::informeArticulos_Referencia"}" autocomplete="off"/>
                         <p class="help-block">
-                           Dejar en blanco para filtrar por familia.
+                           {function="L::informeArticulos_DejarBlancoParaFamilia"}
                         </p>
                      </div>
                      <div class="form-group">
-                        Familia:
+                        {function="L::informeArticulos_Familia"}:
                         <select class="form-control" name="codfamilia">
-                           <option value="">Todas las familias</option>
+                           <option value="">{function="L::informeArticulos_TodasFamilias"}</option>
                            <option value="">-----</option>
                            {loop="$fsc->familia->all()"}
                            {if="$value->codfamilia==$fsc->codfamilia"}
@@ -635,17 +629,17 @@
                         </select>
                      </div>
                      <div class="form-group">
-                        Desde:
+                        {function="L::informeArticulos_Desde"}:
                         <input class="form-control datepicker" type="text" name="desde" value="{$fsc->desde}"/>
                      </div>
                      <div class="form-group">
-                        Hasta:
+                        {function="L::informeArticulos_Hasta"}:
                         <input class="form-control datepicker" type="text" name="hasta" value="{$fsc->hasta}"/>
                      </div>
                      <div class="form-group">
-                        <a href="{$fsc->agente->url()}">Empleado</a>:
+                        <a href="{$fsc->agente->url()}">{function="L::informeArticulos_Empleado"}</a>:
                         <select name="codagente" class="form-control" onchange="this.form.submit();">
-                           <option value="">Todos</option>
+                           <option value="">{function="L::informeArticulos_Todo"}</option>
                            <option value="">---</option>
                            {loop="$fsc->agente->all()"}
                            {if="$value->codagente==$fsc->codagente"}
@@ -657,16 +651,16 @@
                         </select>
                      </div>
                      <div class="form-group">
-                        Salida:
+                        {function="L::informeArticulos_Salida"}:
                         <select name="generar" class="form-control">
-                           <option value="">Pantalla</option>
-                           <option value="csv">CSV</option>
+                           <option value="">{function="L::informeArticulos_Pantalla"}</option>
+                           <option value="csv">{function="L::informeArticulos_CSV"}</option>
                         </select>
                      </div>
                   </div>
                   <div class="panel-footer">
                      <button class="btn btn-sm btn-primary" type="submit">
-                        <span class="glyphicon glyphicon-eye-open"></span>&nbsp; Mostrar
+                        <span class="glyphicon glyphicon-eye-open"></span>&nbsp; {function="L::informeArticulos_Mostrar"}
                      </button>
                   </div>
             </div>
@@ -679,44 +673,44 @@
                   <div class="panel-heading">
                      <h3 class="panel-title">
                         <span class="glyphicon glyphicon-duplicate"></span>
-                        &nbsp; Informe de facturación
+                        &nbsp; {function="L::informeArticulos_InformeFacturacion"}
                      </h3>
                   </div>
                   <div class="panel-body">
                      <p class="help-block">
-                        Genera un informe de compras o ventas desglosado por artículo, año y mes.
+                        {function="L::informeArticulos_BloqueAyudaInformeFacturacion"}
                      </p>
                      <div class="form-group">
-                        Analizar:
+                        {function="L::informeArticulos_Analizar"}:
                         <select name="documento" class="form-control" onchange="this.form.submit();">
-                           <option value="facturasprov"{if="$fsc->documento=='facturasprov'"} selected=""{/if}>Compras</option>
-                           <option value="facturascli"{if="$fsc->documento=='facturascli'"} selected=""{/if}>Ventas</option>
+                           <option value="facturasprov"{if="$fsc->documento=='facturasprov'"} selected=""{/if}>{function="L::informeArticulos_Compras"}</option>
+                           <option value="facturascli"{if="$fsc->documento=='facturascli'"} selected=""{/if}>{function="L::informeArticulos_Ventas"}</option>
                         </select>
                      </div>
                      <div class="radio">
                         <label>
                            <input type="radio" name="cantidades" value="FALSE"{if="!$fsc->cantidades"} checked=""{/if}/>
-                           Importes
+                           {function="L::informeArticulos_Importes"}
                         </label>
                      </div>
                      <div class="radio">
                         <label>
                            <input type="radio" name="cantidades" value="TRUE"{if="$fsc->cantidades"} checked=""{/if}/>
-                           Unidades
+                           {function="L::informeArticulos_Unidades"}
                         </label>
                      </div>
                      <div class="form-group">
-                        Desde:
+                        {function="L::informeArticulos_Desde"}:
                         <input class="form-control datepicker" type="text" name="desde" value="{$fsc->desde}"/>
                      </div>
                      <div class="form-group">
-                        Hasta:
+                        {function="L::informeArticulos_Hasta"}:
                         <input class="form-control datepicker" type="text" name="hasta" value="{$fsc->hasta}"/>
                      </div>
                      <div class="form-group">
-                        Familia:
+                        {function="L::informeArticulos_Familia"}:
                         <select class="form-control" name="codfamilia">
-                           <option value="">Todas las familias</option>
+                           <option value="">{function="L::informeArticulos_TodasFamilias"}</option>
                            <option value="">-----</option>
                            {loop="$fsc->familia->all()"}
                            {if="$value->codfamilia==$fsc->codfamilia"}
@@ -728,13 +722,13 @@
                         </select>
                      </div>
                      <div class="form-group">
-                        Mínimo:
-                        <input class="form-control" type="text" name="minimo" value="{$fsc->minimo}" autocomplete="off" placeholder="importe o unidades (opcional)"/>
+                        {function="L::informeArticulos_Minimo"}:
+                        <input class="form-control" type="text" name="minimo" value="{$fsc->minimo}" autocomplete="off" placeholder="{function="L::informeArticulos_ImporteUnidadesOpcional"}"/>
                      </div>
                   </div>
                   <div class="panel-footer">
                      <button class="btn btn-sm btn-primary" type="submit">
-                        <span class="glyphicon glyphicon-eye-open"></span>&nbsp; Mostrar
+                        <span class="glyphicon glyphicon-eye-open"></span>&nbsp; {function="L::informeArticulos_Mostrar"}
                      </button>
                   </div>
                </div>
@@ -747,25 +741,24 @@
                   <div class="panel-heading">
                      <h3 class="panel-title">
                         <span class="glyphicon glyphicon-search"></span>
-                        &nbsp; Desglose de ventas por artículo
+                        &nbsp; {function="L::informeArticulos_DesgloseVentasArticulo"}
                      </h3>
                   </div>
                   <div class="panel-body">
                      <p class="help-block">
-                        Genera un listado con los clientes que han comprado un determinado
-                        artículo en un periodo y lo desglosa por cliente, año y mes.
+                        {function="L::informeArticulos_BloqueAyudaDesgloseVentasArticulo"}<br/>
                      </p>
                      <div class="form-group">
-                        Referencia:
-                        <input class="form-control" type="text" name="referencia" value="{$fsc->referencia}" id="ac_referencia2" maxlength="18" placeholder="referencia" autocomplete="off"/>
+                        {function="L::informeArticulos_Referencia"}:
+                        <input class="form-control" type="text" name="referencia" value="{$fsc->referencia}" id="ac_referencia2" maxlength="18" placeholder="{function="L::informeArticulos_Referencia"}" autocomplete="off"/>
                         <p class="help-block">
-                           Dejar en blanco para filtrar por familia.
+                           {function="L::informeArticulos_DejarBlancoParaFamilia"}
                         </p>
                      </div>
                      <div class="form-group">
-                        Familia:
+                        {function="L::informeArticulos_Familia"}:
                         <select class="form-control" name="codfamilia">
-                           <option value="">Todas las familias</option>
+                           <option value="">{function="L::informeArticulos_TodasFamilias"}</option>
                            <option value="">-----</option>
                            {loop="$fsc->familia->all()"}
                            {if="$value->codfamilia==$fsc->codfamilia"}
@@ -777,21 +770,21 @@
                         </select>
                      </div>
                      <div class="form-group">
-                        Desde:
+                        {function="L::informeArticulos_Desde"}:
                         <input class="form-control datepicker" type="text" name="desde" value="{$fsc->desde}"/>
                      </div>
                      <div class="form-group">
-                        Hasta:
+                        {function="L::informeArticulos_Hasta"}:
                         <input class="form-control datepicker" type="text" name="hasta" value="{$fsc->hasta}"/>
                      </div>
                      <div class="form-group">
-                        Mínimo:
-                        <input class="form-control" type="text" name="minimo" value="{$fsc->minimo}" autocomplete="off" placeholder="unidades (opcional)"/>
+                        {function="L::informeArticulos_Minimo"}:
+                        <input class="form-control" type="text" name="minimo" value="{$fsc->minimo}" autocomplete="off" placeholder="{function="L::informeArticulos_UnidadesOpcional"}"/>
                      </div>
                   </div>
                   <div class="panel-footer">
                      <button class="btn btn-sm btn-primary" type="submit">
-                        <span class="glyphicon glyphicon-eye-open"></span>&nbsp; Mostrar
+                        <span class="glyphicon glyphicon-eye-open"></span>&nbsp; {function="L::informeArticulos_Mostrar"}
                      </button>
                   </div>
                </div>
