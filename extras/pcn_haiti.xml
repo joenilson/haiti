@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    Document   : pcn_haiti.xml
+    Document   : ejercicio_2017.xml
     Description:
-        Estructura de grupos de epígrafes, epígrafes, cuentas y subcuentas del PCN Haiti.
+        Estructura de grupos de epígrafes, epígrafes, cuentas y subcuentas del ejercicio 2017.
 -->
 <ejercicio>
     <cuenta_especial>
@@ -530,7 +530,7 @@
     <cuenta>
         <codepigrafe>0701</codepigrafe>
         <codcuenta>070101</codcuenta>
-        <descripcion>Q2Fpc3Nl</descripcion>
+        <descripcion>Q0FJU1NF</descripcion>
         <idcuentaesp>CAJA</idcuentaesp>
     </cuenta>
     <subcuenta>
@@ -573,6 +573,30 @@
         <codcuenta>020106</codcuenta>
         <codsubcuenta>02010606</codsubcuenta>
         <descripcion>U0FMQUlSRVMgQUNDVU1VTMOJUyDDgCBQQVlFUg==</descripcion>
+        <coddivisa>HTG</coddivisa>
+    </subcuenta>
+    <subcuenta>
+        <codcuenta>050101</codcuenta>
+        <codsubcuenta>05010101</codsubcuenta>
+        <descripcion>QUNIQVRT</descripcion>
+        <coddivisa>HTG</coddivisa>
+    </subcuenta>
+    <subcuenta>
+        <codcuenta>070101</codcuenta>
+        <codsubcuenta>07010101</codsubcuenta>
+        <descripcion>Q2Fpc3Nl</descripcion>
+        <coddivisa>HTG</coddivisa>
+    </subcuenta>
+    <subcuenta>
+        <codcuenta>010301</codcuenta>
+        <codsubcuenta>1030101</codsubcuenta>
+        <descripcion>Q0xJRU5URSBQUlVFQkE=</descripcion>
+        <coddivisa>HTG</coddivisa>
+    </subcuenta>
+    <subcuenta>
+        <codcuenta>020102</codcuenta>
+        <codsubcuenta>2010201</codsubcuenta>
+        <descripcion>SU5EVVNUUklBUyBTQU4gTUlHVUVM</descripcion>
         <coddivisa>HTG</coddivisa>
     </subcuenta>
 </ejercicio>
