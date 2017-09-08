@@ -12,11 +12,11 @@
    nueva_compra_url = '{$fsc->url()}';
    kiwimaru_url = '{#FS_COMMUNITY_URL#}/index.php?page=kiwimaru';
    precio_compra = '{#FS_PRECIO_COMPRA#}';
-   
+
    {if="$fsc->empresa->recequivalencia"}
    tiene_recargo = true;
    {/if}
-   
+
    $(document).ready(function() {
       usar_serie();
       usar_almacen();
@@ -94,7 +94,7 @@
          </div>
       </div>
    </div>
-   
+
    <div role="tabpanel">
       <ul class="nav nav-tabs" role="tablist">
          <li role="presentation" class="active">
@@ -136,7 +136,7 @@
                         <th class="text-right" width="140">Total</th>
                      </tr>
                   </thead>
-                  <tbody id="lineas_albaran"></tbody>
+                  <tbody id="lineas_doc"></tbody>
                   <tbody>
                      <tr class="info">
                         <td><input id="i_new_line" class="form-control" type="text" placeholder="Buscar para añadir..." autocomplete="off"/></td>
@@ -213,7 +213,7 @@
          {/loop}
       </div>
    </div>
-   
+
    <div class="container-fluid" style="margin-top: 10px;">
       <div class="row">
          <div class="col-sm-6">
@@ -261,7 +261,7 @@
          </div>
       </div>
    </div>
-   
+
    <div class="modal fade" id="modal_guardar">
       <div class="modal-dialog">
          <div class="modal-content">
@@ -453,7 +453,7 @@
                               </span>
                            </div>
                            <p class="help-block">Dejar en blanco para asignar una referencia automática.</p>
-                        </div> 
+                        </div>
                      </div>
                      <div class="col-sm-3">
                         <div class="form-group">

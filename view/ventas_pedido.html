@@ -16,11 +16,11 @@
    cliente = {function="json_encode($fsc->cliente_s)"};
    nueva_venta_url = '{$fsc->nuevo_pedido_url}';
    kiwimaru_url = '{#FS_COMMUNITY_URL#}/index.php?page=kiwimaru';
-   
+
    {if="$fsc->cliente_s"}
    all_direcciones = {function="json_encode($fsc->cliente_s->get_direcciones())"};
    {/if}
-   
+
    function cambiar_cliente() {
       $("#p_cambiar_cliente").removeClass('hidden');
       document.f_pedido.ac_cliente.readOnly = false;
@@ -115,7 +115,7 @@
                   {/if}
                {/loop}
             </div>
-            
+
             <div class="btn-group">
                {if="$fsc->pedido->idalbaran"}
                <a class="btn btn-sm btn-info text-capitalize" href="{$fsc->pedido->albaran_url()}">
@@ -382,7 +382,7 @@
                         <th class="text-right" width="140">Total</th>
                      </tr>
                   </thead>
-                  <tbody id="lineas_albaran">
+                  <tbody id="lineas_doc">
                      {loop="$lineas"}
                      <tr id="linea_{$counter}">
                         <td>
@@ -988,7 +988,7 @@
                               </span>
                            </div>
                            <p class="help-block">Dejar en blanco para asignar una referencia automática.</p>
-                        </div>   
+                        </div>
                      </div>
                      <div class="col-sm-8">
                         <div class="form-group">
